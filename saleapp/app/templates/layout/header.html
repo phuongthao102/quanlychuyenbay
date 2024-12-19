@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">QUẢN LÝ CHUYẾN BAY</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/flights">Đặt vé</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/schedule_flight">Lập lịch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sell_ticket">Bán vé</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/sell_ticket">Thống kê báo cáo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/cart">
+                        &#128722; <span class="badge bg-danger cart-counter">{{ cart_stats.total_quantity }}</span>
+                    </a>
+                </li>
+
+                {% if session['user_id'] %}
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/">
+                        <img src="{{ current_user.avatar }}" width="25" class="rounded-circle" />
+                        Chào {{ current_user.username }}.
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/logout">Đăng xuất</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/login">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/register">Đăng ký</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form method="get" action="/" class="d-flex">
+                <input class="form-control me-1" type="text" name="kw" placeholder="Tìm kiếm chuyến bay">
+                <button class="btn btn-primary" type="submit">Tìm</button>
+            </form>
+        </div>
+    </div>
+</nav>
